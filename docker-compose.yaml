@@ -145,7 +145,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:20052
       - CORE_PEER_GOSSIP_BOOTSTRAP=insp.wdra.group:20051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=insp.wdra.group:20051
-      - CORE_PEER_LOCALMSPID=inspMSP
+      - CORE_PEER_LOCALMSPID=wdraMSP
      # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
     volumes:
         - /var/run/:/host/var/run/
@@ -171,7 +171,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:30052
       - CORE_PEER_GOSSIP_BOOTSTRAP=dpstr.wdra.group:30051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=dpstr.wdra.group:30051
-      - CORE_PEER_LOCALMSPID=dpstrMSP
+      - CORE_PEER_LOCALMSPID=wdraMSP
      # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
     volumes:
         - /var/run/:/host/var/run/
@@ -501,7 +501,7 @@ services:
       #- FABRIC_LOGGING_SPEC=DEBUG
       - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_ID=cli
-      - CORE_PEER_ADDRESS=peer1.wdra.group:7051
+      - CORE_PEER_ADDRESS=wdra.wdra.group:7051
       - CORE_PEER_LOCALMSPID=wdraMSP
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls/server.crt
