@@ -2,7 +2,7 @@ Organizations:
     - &OrdererOrg
         Name: OrdererOrg
         ID: OrdererMSP
-        MSPDir: crypto-config/ordererOrganizations/talentsprint/msp
+        MSPDir: crypto-config/ordererOrganizations/group/msp
         Policies:
             Readers:
                 Type: Signature
@@ -14,92 +14,114 @@ Organizations:
                 Type: Signature
                 Rule: "OR('OrdererMSP.admin')"
 
-    - &Org1
-        Name: Org1MSP
-        ID: Org1MSP
-        MSPDir: crypto-config/peerOrganizations/mypeer1.talentsprint/msp
+    - &wdra
+        Name: wdraMSP
+        ID: wdraMSP
+        MSPDir: crypto-config/peerOrganizations/wdra.group/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
+                Rule: "OR('wdraMSP.admin', 'wdraMSP.peer', 'wdraMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
+                Rule: "OR('wdraMSP.admin', 'wdraMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin')"
+                Rule: "OR('wdraMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('Org1MSP.peer')"
+                Rule: "OR('wdraMSP.peer')"
         AnchorPeers:
-            - Host: peer1.mypeer1.talentsprint
+            - Host: peer1.wdra.group
               Port: 7051
 
-    - &Org2
-        Name: Org2MSP
-        ID: Org2MSP
-        MSPDir: crypto-config/peerOrganizations/mypeer2.talentsprint/msp
+    - &pvcs
+        Name: pvcsMSP
+        ID: pvcsMSP
+        MSPDir: crypto-config/peerOrganizations/pvcs.group/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
+                Rule: "OR('pvcsMSP.admin', 'pvcsMSP.peer', 'pvcsMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
+                Rule: "OR('pvcsMSP.admin', 'pvcsMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin')"
+                Rule: "OR('pvcsMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('Org2MSP.peer')"
+                Rule: "OR('pvcsMSP.peer')"
 
         AnchorPeers:
-            - Host: peer1.mypeer1.talentsprint
+            - Host: peer1.pvcs.group
               Port: 9051
 
-    - &Org3
-        Name: Org3MSP
-        ID: Org3MSP
-        MSPDir: crypto-config/peerOrganizations/mypeer3.talentsprint/msp
+    - &clm
+        Name: clmMSP
+        ID: clmMSP
+        MSPDir: crypto-config/peerOrganizations/clm.group/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Org3MSP.admin', 'Org3MSP.peer', 'Org3MSP.client')"
+                Rule: "OR('clmMSP.admin', 'clmMSP.peer', 'clmMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Org3MSP.admin', 'Org3MSP.client')"
+                Rule: "OR('clmMSP.admin', 'clmMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org3MSP.admin')"
+                Rule: "OR('clmMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('Org3MSP.peer')"
+                Rule: "OR('clmMSP.peer')"
 
         AnchorPeers:
-            - Host: peer1.mypeer3.talentsprint
+            - Host: peer1.clm.group
               Port: 11051
-        
-    - &Org4
-        Name: Org4MSP
-        ID: Org4MSP
-        MSPDir: crypto-config/peerOrganizations/mypeer4.talentsprint/msp
+
+    - &ins
+        Name: insMSP
+        ID: insMSP
+        MSPDir: crypto-config/peerOrganizations/ins.group/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Org4MSP.admin', 'Org4MSP.peer', 'Org4MSP.client')"
+                Rule: "OR('insMSP.admin', 'insMSP.peer', 'insMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Org4MSP.admin', 'Org4MSP.client')"
+                Rule: "OR('insMSP.admin', 'insMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org4MSP.admin')"
+                Rule: "OR('insMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('Org4MSP.peer')"
+                Rule: "OR('insMSP.peer')"
 
         AnchorPeers:
-            - Host: peer1.mypeer4.talentsprint
+            - Host: peer1.ins.group
               Port: 13051
+
+    - &bank
+        Name: bankMSP
+        ID: bankMSP
+        MSPDir: crypto-config/peerOrganizations/bank.group/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('bankMSP.admin', 'bankMSP.peer', 'bankMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('bankMSP.admin', 'bankMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('bankMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('bankMSP.peer')"
+
+        AnchorPeers:
+            - Host: peer1.bank.group
+              Port: 14051
 
 Capabilities:
     Channel: &ChannelCapabilities
@@ -136,7 +158,7 @@ Application: &ApplicationDefaults
 Orderer: &OrdererDefaults
     OrdererType: etcdraft
     Addresses:
-        - orderer1.talentsprint:7050
+        - orderer1.group:7050
     BatchTimeout: 2s
     BatchSize:
         MaxMessageCount: 10
@@ -182,10 +204,11 @@ Profiles:
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *Org1
-                - *Org2
-                - *Org3
-                - *Org4
+                - *wdra
+                - *pvcs
+                - *clm
+                - *ins
+                  #- *bank
             Capabilities:
                 <<: *ApplicationCapabilities
 
@@ -198,32 +221,32 @@ Profiles:
             OrdererType: etcdraft
             EtcdRaft:
                 Consenters:
-                - Host: orderer1.talentsprint
+                - Host: orderer1.group
                   Port: 7050
-                  ClientTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer1.talentsprint/tls/server.crt
-                  ServerTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer1.talentsprint/tls/server.crt
-                - Host: orderer2.talentsprint
+                  ClientTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer1.group/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer1.group/tls/server.crt
+                - Host: orderer2.group
                   Port: 7050
-                  ClientTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer2.talentsprint/tls/server.crt
-                  ServerTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer2.talentsprint/tls/server.crt
-                - Host: orderer3.talentsprint
+                  ClientTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer2.group/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer2.group/tls/server.crt
+                - Host: orderer3.group
                   Port: 7050
-                  ClientTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer3.talentsprint/tls/server.crt
-                  ServerTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer3.talentsprint/tls/server.crt
-                - Host: orderer4.talentsprint
+                  ClientTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer3.group/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer3.group/tls/server.crt
+                - Host: orderer4.group
                   Port: 7050
-                  ClientTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer4.talentsprint/tls/server.crt
-                  ServerTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer4.talentsprint/tls/server.crt
-                - Host: orderer5.talentsprint
+                  ClientTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer4.group/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer4.group/tls/server.crt
+                - Host: orderer5.group
                   Port: 7050
-                  ClientTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer5.talentsprint/tls/server.crt
-                  ServerTLSCert: crypto-config/ordererOrganizations/talentsprint/orderers/orderer5.talentsprint/tls/server.crt
+                  ClientTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer5.group/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/group/orderers/orderer5.group/tls/server.crt
             Addresses:
-                - orderer1.talentsprint:7050
-                - orderer2.talentsprint:7050
-                - orderer3.talentsprint:7050
-                - orderer4.talentsprint:7050
-                - orderer5.talentsprint:7050
+                - orderer1.group:7050
+                - orderer2.group:7050
+                - orderer3.group:7050
+                - orderer4.group:7050
+                - orderer5.group:7050
 
             Organizations:
             - *OrdererOrg
@@ -236,7 +259,8 @@ Profiles:
         Consortiums:
             SampleConsortium:
                 Organizations:
-                - *Org1
-                - *Org2
-                - *Org3
-                - *Org4
+                - *wdra
+                - *pvcs
+                - *clm
+                - *ins
+                  #  - *bank

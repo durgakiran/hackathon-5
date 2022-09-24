@@ -1,49 +1,60 @@
 OrdererOrgs:
 
   - Name: Orderer
-    Domain: talentsprint
+    Domain: group
     EnableNodeOUs: true
     Template:
       Start: 1
       Count: 5
-      
+
 
 PeerOrgs:
-  - Name: mypeer1
-    Domain: mypeer1.talentsprint
+  - Name: wdra
+    Domain: wdra.group
     EnableNodeOUs: true
     Template:
       Start: 1
-      Count: 2
+      Count: 1
     Users:
       Start: 1
       Count: 1
 
-  - Name: mypeer2
-    Domain: mypeer2.talentsprint
+  - Name: pvcs
+    Domain: pvcs.group
     EnableNodeOUs: true
     Template:
       Start: 1
-      Count: 2
-    Users:
       Count: 1
-  
-  - Name: mypeer3
-    Domain: mypeer3.talentsprint
-    EnableNodeOUs: true
-    Template:
-      Start: 1
-      Count: 2
     Users:
       Start: 1
       Count: 1
 
-  - Name: mypeer4
-    Domain: mypeer4.talentsprint
+
+  - Name: clm
+    Domain: clm.group
     EnableNodeOUs: true
     Template:
       Start: 1
-      Count: 2
+      Count: 1
+    Users:
+      Count: 1
+
+  - Name: ins
+    Domain: ins.group
+    EnableNodeOUs: true
+    Template:
+      Start: 1
+      Count: 1
+    Users:
+      Start: 1
+      Count: 1
+
+  - Name: bank
+    Domain: bank.group
+    EnableNodeOUs: true
+    Template:
+      Start: 1
+      Count: 1
     Users:
       Start: 1
       Count: 1

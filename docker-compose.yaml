@@ -1,301 +1,228 @@
+
+
 version: '2'
 
 volumes:
-  orderer1.talentsprint:
-  orderer2.talentsprint:
-  orderer3.talentsprint:
-  orderer4.talentsprint:
-  orderer5.talentsprint:
-  peer1.mypeer1.talentsprint:
-  peer2.mypeer1.talentsprint:
-  peer1.mypeer2.talentsprint:
-  peer2.mypeer2.talentsprint:
-  peer1.mypeer3.talentsprint:
-  peer2.mypeer3.talentsprint:
-  peer1.mypeer4.talentsprint:
-  peer2.mypeer4.talentsprint:
+  orderer1.group:
+  orderer2.group:
+  orderer3.group:
+  orderer4.group:
+  orderer5.group:
+  peer1.wdra.group:
+  peer1.bank.group:
+  peer1.pvcs.group:
+  peer1.clm.group:
+  peer1.ins.group:
 
 networks:
   byfn:
 
 services:
-  orderer1.talentsprint:
+  orderer1.group:
     extends:
       file: base.yaml
       service: orderer-base
-    container_name: orderer1.talentsprint
+    container_name: orderer1.group
     
     
     networks:
     - byfn
     volumes:
         - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer1.talentsprint/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer1.talentsprint/tls/:/var/hyperledger/orderer/tls
-        - orderer1.talentsprint:/var/hyperledger/production/orderer
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer1.group/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer1.group/tls/:/var/hyperledger/orderer/tls
+        - orderer1.group:/var/hyperledger/production/orderer
     ports:
     - 7050:7050
 
-  orderer2.talentsprint:
+  orderer2.group:
     extends:
       file: base.yaml
       service: orderer-base
-    container_name: orderer2.talentsprint
+    container_name: orderer2.group
     networks:
     - byfn
     volumes:
         - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer2.talentsprint/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer2.talentsprint/tls/:/var/hyperledger/orderer/tls
-        - orderer2.talentsprint:/var/hyperledger/production/orderer
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer2.group/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer2.group/tls/:/var/hyperledger/orderer/tls
+        - orderer2.group:/var/hyperledger/production/orderer
     ports:
     - 8050:7050
 
-  orderer3.talentsprint:
+  orderer3.group:
     extends:
       file: base.yaml
       service: orderer-base
-    container_name: orderer3.talentsprint
+    container_name: orderer3.group
     networks:
     - byfn
     volumes:
         - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer3.talentsprint/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer3.talentsprint/tls/:/var/hyperledger/orderer/tls
-        - orderer3.talentsprint:/var/hyperledger/production/orderer
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer3.group/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer3.group/tls/:/var/hyperledger/orderer/tls
+        - orderer3.group:/var/hyperledger/production/orderer
     ports:
     - 9050:7050
 
 
-  orderer4.talentsprint:
+  orderer4.group:
     extends:
       file: base.yaml
       service: orderer-base
-    container_name: orderer4.talentsprint
+    container_name: orderer4.group
     networks:
     - byfn
     volumes:
         - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer4.talentsprint/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer4.talentsprint/tls/:/var/hyperledger/orderer/tls
-        - orderer4.talentsprint:/var/hyperledger/production/orderer
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer4.group/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer4.group/tls/:/var/hyperledger/orderer/tls
+        - orderer4.group:/var/hyperledger/production/orderer
     ports:
     - 10050:7050
 
-  orderer5.talentsprint:
+  orderer5.group:
     extends:
       file: base.yaml
       service: orderer-base
-    container_name: orderer5.talentsprint
+    container_name: orderer5.group
     networks:
     - byfn
     volumes:
         - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer5.talentsprint/msp:/var/hyperledger/orderer/msp
-        - ./crypto-config/ordererOrganizations/talentsprint/orderers/orderer5.talentsprint/tls/:/var/hyperledger/orderer/tls
-        - orderer5.talentsprint:/var/hyperledger/production/orderer
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer5.group/msp:/var/hyperledger/orderer/msp
+        - ./crypto-config/ordererOrganizations/group/orderers/orderer5.group/tls/:/var/hyperledger/orderer/tls
+        - orderer5.group:/var/hyperledger/production/orderer
     ports:
     - 11050:7050
 
 
-  peer1.mypeer1.talentsprint:
-    container_name: peer1.mypeer1.talentsprint
+  peer1.wdra.group:
+    container_name: peer1.wdra.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.mypeer1.talentsprint
-      - CORE_PEER_ADDRESS=peer1.mypeer1.talentsprint:7051
+      - CORE_PEER_ID=peer1.wdra.group
+      - CORE_PEER_ADDRESS=peer1.wdra.group:7051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.mypeer1.talentsprint:7052
+      - CORE_PEER_CHAINCODEADDRESS=peer1.wdra.group:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer2.mypeer1.talentsprint:8051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.mypeer1.talentsprint:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.wdra.group:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.wdra.group:7051
+      - CORE_PEER_LOCALMSPID=wdraMSP
      # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/mypeer1.talentsprint/peers/peer1.mypeer1.talentsprint/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/mypeer1.talentsprint/peers/peer1.mypeer1.talentsprint/tls:/etc/hyperledger/fabric/tls
-        - peer1.mypeer1.talentsprint:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/wdra.group/peers/peer1.wdra.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls:/etc/hyperledger/fabric/tls
+        - peer1.wdra.group:/var/hyperledger/production
     ports:
       - 7051:7051
     networks:
       - byfn
 
-  peer2.mypeer1.talentsprint:
-    container_name: peer2.mypeer1.talentsprint
+  peer1.bank.group:
+    container_name: peer1.bank.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer2.mypeer1.talentsprint
-      - CORE_PEER_ADDRESS=peer2.mypeer1.talentsprint:8051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
-      - CORE_PEER_CHAINCODEADDRESS=peer2.mypeer1.talentsprint:8052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1. .talentsprint:7051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.mypeer1.talentsprint:8051
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_ID=peer1.bank.group
+      - CORE_PEER_ADDRESS=peer1.bank.group:14051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:14051
+      - CORE_PEER_CHAINCODEADDRESS=peer1.bank.group:14052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:14052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.bank.group:14051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.bank.group:14051
+      - CORE_PEER_LOCALMSPID=bankMSP
      # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/mypeer1.talentsprint/peers/peer2.mypeer1.talentsprint/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/mypeer1.talentsprint/peers/peer2.mypeer1.talentsprint/tls:/etc/hyperledger/fabric/tls
-        - peer2.mypeer1.talentsprint:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/bank.group/peers/peer1.bank.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/bank.group/peers/peer1.bank.group/tls:/etc/hyperledger/fabric/tls
+        - peer1.bank.group:/var/hyperledger/production
     ports:
-      - 8051:8051
+      - 14051:14051
     networks:
       - byfn
 
-  peer1.mypeer2.talentsprint:
-    container_name: peer1.mypeer2.talentsprint
+  peer1.pvcs.group:
+    container_name: peer1.pvcs.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.mypeer2.talentsprint
-      - CORE_PEER_ADDRESS=peer1.mypeer2.talentsprint:9051
+      - CORE_PEER_ID=peer1.pvcs.group
+      - CORE_PEER_ADDRESS=peer1.pvcs.group:9051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.mypeer2.talentsprint:9052
+      - CORE_PEER_CHAINCODEADDRESS=peer1.pvcs.group:9052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer2.mypeer2.talentsprint:10051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.mypeer2.talentsprint:9051
-      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.pvcs.group:9051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.pvcs.group:9051
+      - CORE_PEER_LOCALMSPID=pvcsMSP
     # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgbM4we9AUPQYRtNWUeHJyruyPQ3tYbCANqVl+3gVnrxmhRANCAAQleYcECttVsgtueGsduEq4kZYi3OqPmDb1YGeebpS5TKab28s5kp4bsZ56/6dfo48xyA+r59imZ+Cg1c6kjbuB_sk
 
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/mypeer2.talentsprint/peers/peer1.mypeer2.talentsprint/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/mypeer2.talentsprint/peers/peer1.mypeer2.talentsprint/tls:/etc/hyperledger/fabric/tls
-        - peer1.mypeer2.talentsprint:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/pvcs.group/peers/peer1.pvcs.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/pvcs.group/peers/peer1.pvcs.group/tls:/etc/hyperledger/fabric/tls
+        - peer1.pvcs.group:/var/hyperledger/production
     ports:
       - 9051:9051
     networks:
+
       - byfn
 
-  peer2.mypeer2.talentsprint:
-    container_name: peer2.mypeer2.talentsprint
+
+  peer1.clm.group:
+    container_name: peer1.clm.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer2.mypeer2.talentsprint
-      - CORE_PEER_ADDRESS=peer2.mypeer2.talentsprint:10051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:10051
-      - CORE_PEER_CHAINCODEADDRESS=peer2.mypeer2.talentsprint:10052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.mypeer2.talentsprint:9051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.mypeer2.talentsprint:10051
-      - CORE_PEER_LOCALMSPID=Org2MSP
-      # -FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgbM4we9AUPQYRtNWUeHJyruyPQ3tYbCANqVl+3gVnrxmhRANCAAQleYcECttVsgtueGsduEq4kZYi3OqPmDb1YGeebpS5TKab28s5kp4bsZ56/6dfo48xyA+r59imZ+Cg1c6kjbuB_sk
-    volumes:
-        - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/mypeer2.talentsprint/peers/peer2.mypeer2.talentsprint/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/mypeer2.talentsprint/peers/peer2.mypeer2.talentsprint/tls:/etc/hyperledger/fabric/tls
-        - peer2.mypeer2.talentsprint:/var/hyperledger/production
-    ports:
-      - 10051:10051
-    networks:
-      - byfn
-
-  peer1.mypeer3.talentsprint:
-    container_name: peer1.mypeer3.talentsprint
-    extends:
-      file: base.yaml
-      service: peer-base
-    environment:
-      - CORE_PEER_ID=peer1.mypeer3.talentsprint
-      - CORE_PEER_ADDRESS=peer1.mypeer3.talentsprint:11051
+      - CORE_PEER_ID=peer1.clm.group
+      - CORE_PEER_ADDRESS=peer1.clm.group:11051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:11051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.mypeer3.talentsprint:11052
+      - CORE_PEER_CHAINCODEADDRESS=peer1.clm.group:11052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:11052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer2.mypeer3.talentsprint:12051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.mypeer3.talentsprint:11051
-      - CORE_PEER_LOCALMSPID=Org3MSP
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.clm.group:11051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.clm.group:11051
+      - CORE_PEER_LOCALMSPID=clmMSP
     #  - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg+a2TrePaoe23eE/9PflbQMB9acCXgSbHLJOqaxoxGSyhRANCAAQllm6tCl7QFpeB8sww+YO0NYpDyFmdFD9q2UdxJIW6/rVTfLyThGLOu8rjQifh8ouPEBR/3LTraRxjygyze2SR_sk
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/mypeer3.talentsprint/peers/peer1.mypeer3.talentsprint/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/mypeer3.talentsprint/peers/peer1.mypeer3.talentsprint/tls:/etc/hyperledger/fabric/tls
-        - peer1.mypeer3.talentsprint:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/clm.group/peers/peer1.clm.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/clm.group/peers/peer1.clm.group/tls:/etc/hyperledger/fabric/tls
+        - peer1.clm.group:/var/hyperledger/production
     ports:
       - 11051:11051
     networks:
       - byfn
 
-  peer2.mypeer3.talentsprint:
-    container_name: peer2.mypeer3.talentsprint
-    extends:
-      file: base.yaml
-      service: peer-base
-    environment:
-      - CORE_PEER_ID=peer2.mypeer3.talentsprint
-      - CORE_PEER_ADDRESS=peer2.mypeer3.talentsprint:12051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:12051
-      - CORE_PEER_CHAINCODEADDRESS=peer2.mypeer3.talentsprint:12052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:12052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.mypeer3.talentsprint:11051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.mypeer3.talentsprint:12051
-      - CORE_PEER_LOCALMSPID=Org3MSP
-    #  - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg+a2TrePaoe23eE/9PflbQMB9acCXgSbHLJOqaxoxGSyhRANCAAQllm6tCl7QFpeB8sww+YO0NYpDyFmdFD9q2UdxJIW6/rVTfLyThGLOu8rjQifh8ouPEBR/3LTraRxjygyze2SR_sk
-    volumes:
-        - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/mypeer3.talentsprint/peers/peer2.mypeer3.talentsprint/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/mypeer3.talentsprint/peers/peer2.mypeer3.talentsprint/tls:/etc/hyperledger/fabric/tls
-        - peer2.mypeer3.talentsprint:/var/hyperledger/production
-    ports:
-      - 12051:12051
-    networks:
-      - byfn
 
-  peer1.mypeer4.talentsprint:
-    container_name: peer1.mypeer4.talentsprint
+  peer1.ins.group:
+    container_name: peer1.ins.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.mypeer4.talentsprint
-      - CORE_PEER_ADDRESS=peer1.mypeer4.talentsprint:13051
+      - CORE_PEER_ID=peer1.ins.group
+      - CORE_PEER_ADDRESS=peer1.ins.group:13051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:13051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.mypeer4.talentsprint:13052
+      - CORE_PEER_CHAINCODEADDRESS=peer1.ins.group:13052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:13052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer2.mypeer4.talentsprint:14051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.mypeer4.talentsprint:13051
-      - CORE_PEER_LOCALMSPID=Org4MSP
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.ins.group:13051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.ins.group:13051
+      - CORE_PEER_LOCALMSPID=insMSP
    #   - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgt5C0p9ZB/pNbLLUEhcNTy6u32rrp3SRh4hQJ4zNfcduhRANCAAT62JqaoIFcxiyT0/LklUKmv3EH/p28cGKC2oruK2xFVd8EZkQ6qqP9rXGrjhdI8CTP5CjzrCH82b66zTN3+hRh_sk
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/mypeer4.talentsprint/peers/peer1.mypeer4.talentsprint/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/mypeer4.talentsprint/peers/peer1.mypeer4.talentsprint/tls:/etc/hyperledger/fabric/tls
-        - peer1.mypeer4.talentsprint:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/ins.group/peers/peer1.ins.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/ins.group/peers/peer1.ins.group/tls:/etc/hyperledger/fabric/tls
+        - peer1.ins.group:/var/hyperledger/production
     ports:
       - 13051:13051
-    networks:
-      - byfn
-
-  peer2.mypeer4.talentsprint:
-    container_name: peer2.mypeer4.talentsprint
-    extends:
-      file: base.yaml
-      service: peer-base
-    environment:
-      - CORE_PEER_ID=peer2.mypeer4.talentsprint
-      - CORE_PEER_ADDRESS=peer2.mypeer4.talentsprint:14051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:14051
-      - CORE_PEER_CHAINCODEADDRESS=peer2.mypeer4.talentsprint:14052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:14052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.mypeer4.talentsprint:13051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.mypeer4.talentsprint:14051
-      - CORE_PEER_LOCALMSPID=Org4MSP
-     # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgt5C0p9ZB/pNbLLUEhcNTy6u32rrp3SRh4hQJ4zNfcduhRANCAAT62JqaoIFcxiyT0/LklUKmv3EH/p28cGKC2oruK2xFVd8EZkQ6qqP9rXGrjhdI8CTP5CjzrCH82b66zTN3+hRh_sk
-    volumes:
-        - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/mypeer4.talentsprint/peers/peer2.mypeer4.talentsprint/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/mypeer4.talentsprint/peers/peer2.mypeer4.talentsprint/tls:/etc/hyperledger/fabric/tls
-        - peer2.mypeer4.talentsprint:/var/hyperledger/production
-    ports:
-      - 14051:14051
     networks:
       - byfn
 
@@ -312,13 +239,13 @@ services:
       #- FABRIC_LOGGING_SPEC=DEBUG
       - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_ID=cli
-      - CORE_PEER_ADDRESS=peer1.mypeer1.talentsprint:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_ADDRESS=peer1.wdra.group:7051
+      - CORE_PEER_LOCALMSPID=wdraMSP
       - CORE_PEER_TLS_ENABLED=true
-      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/mypeer1.talentsprint/peers/peer1.mypeer1.talentsprint/tls/server.crt
-      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/mypeer1.talentsprint/peers/peer1.mypeer1.talentsprint/tls/server.key
-      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/mypeer1.talentsprint/peers/peer1.mypeer1.talentsprint/tls/ca.crt
-      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/mypeer1.talentsprint/users/Admin@mypeer1.talentsprint/msp
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/users/Admin@wdra.group/msp
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
     volumes:
@@ -329,18 +256,15 @@ services:
         - ./myscripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/myscripts/
         - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
-      - orderer1.talentsprint
-      - orderer2.talentsprint
-      - orderer3.talentsprint
-      - orderer4.talentsprint
-      - orderer5.talentsprint
-      - peer1.mypeer1.talentsprint
-      - peer2.mypeer1.talentsprint
-      - peer1.mypeer2.talentsprint
-      - peer2.mypeer2.talentsprint
-      - peer1.mypeer3.talentsprint
-      - peer2.mypeer3.talentsprint
-      - peer1.mypeer4.talentsprint
-      - peer2.mypeer4.talentsprint
+      - orderer1.group
+      - orderer2.group
+      - orderer3.group
+      - orderer4.group
+      - orderer5.group
+      - peer1.wdra.group
+      - peer1.bank.group
+      - peer1.pvcs.group
+      - peer1.clm.group
+      - peer1.ins.group
     networks:
       - byfn
