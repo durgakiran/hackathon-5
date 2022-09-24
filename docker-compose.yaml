@@ -153,7 +153,7 @@ services:
         - ./crypto-config/peerOrganizations/wdra.group/peers/insp.wdra.group/tls:/etc/hyperledger/fabric/tls
         - insp.wdra.group:/var/hyperledger/production
     ports:
-      - 7051:20051
+      - 20051:7051
     networks:
       - byfn
 
@@ -179,7 +179,7 @@ services:
         - ./crypto-config/peerOrganizations/wdra.group/peers/dpstr.wdra.group/tls:/etc/hyperledger/fabric/tls
         - dpstr.wdra.group:/var/hyperledger/production
     ports:
-      - 7051:30051
+      - 30051:7051
     networks:
       - byfn
 
@@ -204,7 +204,7 @@ services:
         - ./crypto-config/peerOrganizations/fis.group/peers/pubank.fis.group/tls:/etc/hyperledger/fabric/tls
         - pubank.fis.group:/var/hyperledger/production
     ports:
-      - 7051:14051
+      - 14051:7051
     networks:
       - byfn
   
@@ -229,7 +229,7 @@ services:
         - ./crypto-config/peerOrganizations/fis.group/peers/pvbank.fis.group/tls:/etc/hyperledger/fabric/tls
         - pvbank.fis.group:/var/hyperledger/production
     ports:
-      - 7051:15051
+      - 15051:7051
     networks:
       - byfn
 
@@ -254,7 +254,7 @@ services:
         - ./crypto-config/peerOrganizations/fis.group/peers/nbfc.fis.group/tls:/etc/hyperledger/fabric/tls
         - nbfc.fis.group:/var/hyperledger/production
     ports:
-      - 7051:16051
+      - 16051:7051
     networks:
       - byfn
 
@@ -280,7 +280,7 @@ services:
         - ./crypto-config/peerOrganizations/cs.group/peers/pvcs.cs.group/tls:/etc/hyperledger/fabric/tls
         - pvcs.cs.group:/var/hyperledger/production
     ports:
-      - 7051:17051
+      - 17051:7051
     networks:
       - byfn
 
@@ -306,7 +306,7 @@ services:
         - ./crypto-config/peerOrganizations/cs.group/peers/pucs.cs.group/tls:/etc/hyperledger/fabric/tls
         - pucs.cs.group:/var/hyperledger/production
     ports:
-      - 7051:18051
+      - 18051:7051
     networks:
       - byfn
   
@@ -332,7 +332,7 @@ services:
         - ./crypto-config/peerOrganizations/cs.group/peers/cco.cs.group/tls:/etc/hyperledger/fabric/tls
         - cco.cs.group:/var/hyperledger/production
     ports:
-      - 7051:19051
+      - 19051:7051
     networks:
       - byfn
 
@@ -358,7 +358,7 @@ services:
         - ./crypto-config/peerOrganizations/clm.group/peers/clmr.clm.group/tls:/etc/hyperledger/fabric/tls
         - clmr.clm.group:/var/hyperledger/production
     ports:
-      - 7051:21051
+      - 21051:7051
     networks:
       - byfn
 
@@ -383,7 +383,7 @@ services:
         - ./crypto-config/peerOrganizations/clm.group/peers/clmn.clm.group/tls:/etc/hyperledger/fabric/tls
         - clmn.clm.group:/var/hyperledger/production
     ports:
-      - 7051:22051
+      - 22051:7051
     networks:
       - byfn
 
@@ -409,7 +409,7 @@ services:
         - ./crypto-config/peerOrganizations/ins.group/peers/pvins.ins.group/tls:/etc/hyperledger/fabric/tls
         - pvins.ins.group:/var/hyperledger/production
     ports:
-      - 7051:23051
+      - 23051:7051
     networks:
       - byfn
 
@@ -434,7 +434,7 @@ services:
         - ./crypto-config/peerOrganizations/ins.group/peers/puins.ins.group/tls:/etc/hyperledger/fabric/tls
         - puins.ins.group:/var/hyperledger/production
     ports:
-      - 7051:24051
+      - 24051:7051
     networks:
       - byfn
   
@@ -459,7 +459,7 @@ services:
         - ./crypto-config/peerOrganizations/tralog.group/peers/regtr.tralog.group/tls:/etc/hyperledger/fabric/tls
         - regtr.tralog.group:/var/hyperledger/production
     ports:
-      - 7051:25051
+      - 25051:7051
     networks:
       - byfn
   
@@ -484,7 +484,7 @@ services:
         - ./crypto-config/peerOrganizations/tralog.group/peers/nattr.tralog.group/tls:/etc/hyperledger/fabric/tls
         - nattr.tralog.group:/var/hyperledger/production
     ports:
-      - 7051:26051
+      - 26051:7051
     networks:
       - byfn
 
