@@ -54,8 +54,8 @@ Organizations:
                 Rule: "OR('csMSP.peer')"
 
         AnchorPeers:
-            # - Host: peer1.cs.group
-            #   Port: 9051
+            - Host: pucs.cs.group
+              Port: 18051
 
     - &clm
         Name: clmMSP
@@ -76,8 +76,8 @@ Organizations:
                 Rule: "OR('clmMSP.peer')"
 
         AnchorPeers:
-            # - Host: peer1.clm.group
-            #   Port: 11051
+            - Host: clmn.clm.group
+              Port: 22051
 
     - &ins
         Name: insMSP
@@ -98,8 +98,8 @@ Organizations:
                 Rule: "OR('insMSP.peer')"
 
         AnchorPeers:
-            # - Host: peer1.ins.group
-            #   Port: 13051
+            - Host: puins.ins.group
+              Port: 24051
 
     - &fis
         Name: fisMSP
@@ -120,8 +120,8 @@ Organizations:
                 Rule: "OR('fisMSP.peer')"
 
         AnchorPeers:
-            # - Host: peer1.fis.group
-            #   Port: 14051
+            - Host: pubank.fis.group
+              Port: 14051
     
     - &tralog
         Name: tralogMSP
@@ -142,8 +142,8 @@ Organizations:
                 Rule: "OR('tralogMSP.peer')"
 
         AnchorPeers:
-            # - Host: peer1.tralog.group
-            #   Port: 15051
+            - Host: nattr.tralog.group
+              Port: 26051
 
 Capabilities:
     Channel: &ChannelCapabilities
