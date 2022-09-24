@@ -8,11 +8,21 @@ volumes:
   orderer3.group:
   orderer4.group:
   orderer5.group:
-  peer1.wdra.group:
-  peer1.bank.group:
-  peer1.pvcs.group:
-  peer1.clm.group:
-  peer1.ins.group:
+  wdra.wdra.group:
+  insp.wdra.group:
+  dpstr.wdra.group:
+  pubank.fis.group:
+  pvbank.fis.group:
+  nbfc.fis.group:
+  pvcs.cs.group:
+  pucs.cs.group:
+  cco.cs.group:
+  clmr.clm.group:
+  clmn.clm.group:
+  pvins.ins.group:
+  puins.ins.group:
+  regtr.tralog.group:
+  nattr.tralog.group:
 
 networks:
   byfn:
