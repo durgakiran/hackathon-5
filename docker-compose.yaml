@@ -504,9 +504,9 @@ services:
       - CORE_PEER_ADDRESS=wdra.wdra.group:7051
       - CORE_PEER_LOCALMSPID=wdraMSP
       - CORE_PEER_TLS_ENABLED=true
-      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls/server.crt
-      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls/server.key
-      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls/ca.crt
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/wdra.wdra.group/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/wdra.wdra.group/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/peers/wdra.wdra.group/tls/ca.crt
       - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/wdra.group/users/Admin@wdra.group/msp
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash
