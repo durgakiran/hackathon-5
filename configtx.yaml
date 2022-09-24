@@ -32,30 +32,30 @@ Organizations:
                 Type: Signature
                 Rule: "OR('wdraMSP.peer')"
         AnchorPeers:
-            - Host: peer1.wdra.group
+            - Host: wdra.wdra.group
               Port: 7051
 
-    - &pvcs
-        Name: pvcsMSP
-        ID: pvcsMSP
-        MSPDir: crypto-config/peerOrganizations/pvcs.group/msp
+    - &cs
+        Name: csMSP
+        ID: csMSP
+        MSPDir: crypto-config/peerOrganizations/cs.group/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('pvcsMSP.admin', 'pvcsMSP.peer', 'pvcsMSP.client')"
+                Rule: "OR('csMSP.admin', 'csMSP.peer', 'csMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('pvcsMSP.admin', 'pvcsMSP.client')"
+                Rule: "OR('csMSP.admin', 'csMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('pvcsMSP.admin')"
+                Rule: "OR('csMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('pvcsMSP.peer')"
+                Rule: "OR('csMSP.peer')"
 
         AnchorPeers:
-            - Host: peer1.pvcs.group
-              Port: 9051
+            # - Host: peer1.cs.group
+            #   Port: 9051
 
     - &clm
         Name: clmMSP
@@ -76,8 +76,8 @@ Organizations:
                 Rule: "OR('clmMSP.peer')"
 
         AnchorPeers:
-            - Host: peer1.clm.group
-              Port: 11051
+            # - Host: peer1.clm.group
+            #   Port: 11051
 
     - &ins
         Name: insMSP
@@ -98,30 +98,52 @@ Organizations:
                 Rule: "OR('insMSP.peer')"
 
         AnchorPeers:
-            - Host: peer1.ins.group
-              Port: 13051
+            # - Host: peer1.ins.group
+            #   Port: 13051
 
-    - &bank
-        Name: bankMSP
-        ID: bankMSP
-        MSPDir: crypto-config/peerOrganizations/bank.group/msp
+    - &fis
+        Name: fisMSP
+        ID: fisMSP
+        MSPDir: crypto-config/peerOrganizations/fis.group/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('bankMSP.admin', 'bankMSP.peer', 'bankMSP.client')"
+                Rule: "OR('fisMSP.admin', 'fisMSP.peer', 'fisMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('bankMSP.admin', 'bankMSP.client')"
+                Rule: "OR('fisMSP.admin', 'fisMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('bankMSP.admin')"
+                Rule: "OR('fisMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('bankMSP.peer')"
+                Rule: "OR('fisMSP.peer')"
 
         AnchorPeers:
-            - Host: peer1.bank.group
-              Port: 14051
+            # - Host: peer1.fis.group
+            #   Port: 14051
+    
+    - &tralog
+        Name: tralogMSP
+        ID: tralogMSP
+        MSPDir: crypto-config/peerOrganizations/tralog.group/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('tralogMSP.admin', 'tralogMSP.peer', 'tralogMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('tralogMSP.admin', 'tralogMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('tralogMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('tralogMSP.peer')"
+
+        AnchorPeers:
+            # - Host: peer1.tralog.group
+            #   Port: 15051
 
 Capabilities:
     Channel: &ChannelCapabilities
@@ -198,16 +220,18 @@ Channel: &ChannelDefaults
         <<: *ChannelCapabilities
 
 Profiles:
-    FourOrgsChannel:
+    SixOrgsChannel:
         Consortium: SampleConsortium
         <<: *ChannelDefaults
         Application:
             <<: *ApplicationDefaults
             Organizations:
                 - *wdra
-                - *pvcs
+                - *cs
                 - *clm
                 - *ins
+                - *tralog
+                - *fis
                   #- *bank
             Capabilities:
                 <<: *ApplicationCapabilities
@@ -260,7 +284,9 @@ Profiles:
             SampleConsortium:
                 Organizations:
                 - *wdra
-                - *pvcs
+                - *cs
                 - *clm
                 - *ins
+                - *fis
+                - *tralog
                   #  - *bank

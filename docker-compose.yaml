@@ -97,132 +97,384 @@ services:
     - 11050:7050
 
 
-  peer1.wdra.group:
-    container_name: peer1.wdra.group
+  wdra.wdra.group:
+    container_name: wdra.wdra.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.wdra.group
-      - CORE_PEER_ADDRESS=peer1.wdra.group:7051
+      - CORE_PEER_ID=wdra.wdra.group
+      - CORE_PEER_ADDRESS=wdra.wdra.group:7051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.wdra.group:7052
+      - CORE_PEER_CHAINCODEADDRESS=wdra.wdra.group:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.wdra.group:7051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.wdra.group:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=wdra.wdra.group:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=wdra.wdra.group:7051
       - CORE_PEER_LOCALMSPID=wdraMSP
      # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/wdra.group/peers/peer1.wdra.group/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/wdra.group/peers/peer1.wdra.group/tls:/etc/hyperledger/fabric/tls
-        - peer1.wdra.group:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/wdra.group/peers/wdra.wdra.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/wdra.group/peers/wdra.wdra.group/tls:/etc/hyperledger/fabric/tls
+        - wdra.wdra.group:/var/hyperledger/production
     ports:
       - 7051:7051
     networks:
       - byfn
-
-  peer1.bank.group:
-    container_name: peer1.bank.group
+  
+  insp.wdra.group:
+    container_name: insp.wdra.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.bank.group
-      - CORE_PEER_ADDRESS=peer1.bank.group:14051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:14051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.bank.group:14052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:14052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.bank.group:14051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.bank.group:14051
-      - CORE_PEER_LOCALMSPID=bankMSP
+      - CORE_PEER_ID=insp.wdra.group
+      - CORE_PEER_ADDRESS=insp.wdra.group:20051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:20051
+      - CORE_PEER_CHAINCODEADDRESS=insp.wdra.group:20052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:20052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=insp.wdra.group:20051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=insp.wdra.group:20051
+      - CORE_PEER_LOCALMSPID=inspMSP
      # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/bank.group/peers/peer1.bank.group/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/bank.group/peers/peer1.bank.group/tls:/etc/hyperledger/fabric/tls
-        - peer1.bank.group:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/wdra.group/peers/insp.wdra.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/wdra.group/peers/insp.wdra.group/tls:/etc/hyperledger/fabric/tls
+        - insp.wdra.group:/var/hyperledger/production
+    ports:
+      - 20051:20051
+    networks:
+      - byfn
+
+  # wdra depository
+  dpstr.wdra.group:
+    container_name: dpstr.wdra.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=dpstr.wdra.group
+      - CORE_PEER_ADDRESS=dpstr.wdra.group:30051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:30051
+      - CORE_PEER_CHAINCODEADDRESS=dpstr.wdra.group:30052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:30052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=dpstr.wdra.group:30051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=dpstr.wdra.group:30051
+      - CORE_PEER_LOCALMSPID=dpstrMSP
+     # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/wdra.group/peers/dpstr.wdra.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/wdra.group/peers/dpstr.wdra.group/tls:/etc/hyperledger/fabric/tls
+        - dpstr.wdra.group:/var/hyperledger/production
+    ports:
+      - 30051:30051
+    networks:
+      - byfn
+
+  pubank.fis.group:
+    container_name: pubank.fis.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=pubank.fis.group
+      - CORE_PEER_ADDRESS=pubank.fis.group:14051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:14051
+      - CORE_PEER_CHAINCODEADDRESS=pubank.fis.group:14052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:14052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=pubank.fis.group:14051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=pubank.fis.group:14051
+      - CORE_PEER_LOCALMSPID=fisMSP
+     # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/fis.group/peers/pubank.fis.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/fis.group/peers/pubank.fis.group/tls:/etc/hyperledger/fabric/tls
+        - pubank.fis.group:/var/hyperledger/production
     ports:
       - 14051:14051
     networks:
       - byfn
-
-  peer1.pvcs.group:
-    container_name: peer1.pvcs.group
+  
+  pvbank.fis.group:
+    container_name: pvbank.fis.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.pvcs.group
-      - CORE_PEER_ADDRESS=peer1.pvcs.group:9051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.pvcs.group:9052
+      - CORE_PEER_ID=pvbank.fis.group
+      - CORE_PEER_ADDRESS=pvbank.fis.group:15051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:15051
+      - CORE_PEER_CHAINCODEADDRESS=pvbank.fis.group:14052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:14052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=pvbank.fis.group:15051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=pvbank.fis.group:15051
+      - CORE_PEER_LOCALMSPID=fisMSP
+     # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/fis.group/peers/pvbank.fis.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/fis.group/peers/pvbank.fis.group/tls:/etc/hyperledger/fabric/tls
+        - pvbank.fis.group:/var/hyperledger/production
+    ports:
+      - 15051:15051
+    networks:
+      - byfn
+
+  nbfc.fis.group:
+    container_name: nbfc.fis.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=nbfc.fis.group
+      - CORE_PEER_ADDRESS=nbfc.fis.group:16051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:16051
+      - CORE_PEER_CHAINCODEADDRESS=nbfc.fis.group:14052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:14052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=nbfc.fis.group:16051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=nbfc.fis.group:16051
+      - CORE_PEER_LOCALMSPID=fisMSP
+     # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgZ+60xQvTq/z6F/ZbQrFdf52ALHHJ2U9z/ixk2wENH3ShRANCAARLHHokC1mjzRLMaASed9a1tKJdIWkmdiVxY1Wf/Oy2xbjl6xbPeNVBf1vdP80gSDt6oJC7eOyFUkjHW8RP/7Cx_sk
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/fis.group/peers/nbfc.fis.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/fis.group/peers/nbfc.fis.group/tls:/etc/hyperledger/fabric/tls
+        - nbfc.fis.group:/var/hyperledger/production
+    ports:
+      - 16051:16051
+    networks:
+      - byfn
+
+  pvcs.cs.group:
+    container_name: pvcs.cs.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=pvcs.cs.group
+      - CORE_PEER_ADDRESS=pvcs.cs.group:17051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:17051
+      - CORE_PEER_CHAINCODEADDRESS=pvcs.cs.group:9052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.pvcs.group:9051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.pvcs.group:9051
-      - CORE_PEER_LOCALMSPID=pvcsMSP
+      - CORE_PEER_GOSSIP_BOOTSTRAP=pvcs.cs.group:17051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=pvcs.cs.group:17051
+      - CORE_PEER_LOCALMSPID=csMSP
     # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgbM4we9AUPQYRtNWUeHJyruyPQ3tYbCANqVl+3gVnrxmhRANCAAQleYcECttVsgtueGsduEq4kZYi3OqPmDb1YGeebpS5TKab28s5kp4bsZ56/6dfo48xyA+r59imZ+Cg1c6kjbuB_sk
 
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/pvcs.group/peers/peer1.pvcs.group/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/pvcs.group/peers/peer1.pvcs.group/tls:/etc/hyperledger/fabric/tls
-        - peer1.pvcs.group:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/cs.group/peers/pvcs.cs.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/cs.group/peers/pvcs.cs.group/tls:/etc/hyperledger/fabric/tls
+        - pvcs.cs.group:/var/hyperledger/production
     ports:
-      - 9051:9051
+      - 17051:17051
     networks:
-
       - byfn
 
-
-  peer1.clm.group:
-    container_name: peer1.clm.group
+  pucs.cs.group:
+    container_name: pucs.cs.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.clm.group
-      - CORE_PEER_ADDRESS=peer1.clm.group:11051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:11051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.clm.group:11052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:11052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.clm.group:11051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.clm.group:11051
+      - CORE_PEER_ID=pucs.cs.group
+      - CORE_PEER_ADDRESS=pucs.cs.group:18051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:18051
+      - CORE_PEER_CHAINCODEADDRESS=pucs.cs.group:9052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=pucs.cs.group:18051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=pucs.cs.group:18051
+      - CORE_PEER_LOCALMSPID=csMSP
+    # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgbM4we9AUPQYRtNWUeHJyruyPQ3tYbCANqVl+3gVnrxmhRANCAAQleYcECttVsgtueGsduEq4kZYi3OqPmDb1YGeebpS5TKab28s5kp4bsZ56/6dfo48xyA+r59imZ+Cg1c6kjbuB_sk
+
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/cs.group/peers/pucs.cs.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/cs.group/peers/pucs.cs.group/tls:/etc/hyperledger/fabric/tls
+        - pucs.cs.group:/var/hyperledger/production
+    ports:
+      - 18051:18051
+    networks:
+      - byfn
+  
+  cco.cs.group:
+    container_name: cco.cs.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=cco.cs.group
+      - CORE_PEER_ADDRESS=cco.cs.group:19051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:19051
+      - CORE_PEER_CHAINCODEADDRESS=cco.cs.group:9052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=cco.cs.group:19051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=cco.cs.group:19051
+      - CORE_PEER_LOCALMSPID=csMSP
+    # - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgbM4we9AUPQYRtNWUeHJyruyPQ3tYbCANqVl+3gVnrxmhRANCAAQleYcECttVsgtueGsduEq4kZYi3OqPmDb1YGeebpS5TKab28s5kp4bsZ56/6dfo48xyA+r59imZ+Cg1c6kjbuB_sk
+
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/cs.group/peers/cco.cs.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/cs.group/peers/cco.cs.group/tls:/etc/hyperledger/fabric/tls
+        - cco.cs.group:/var/hyperledger/production
+    ports:
+      - 19051:19051
+    networks:
+      - byfn
+
+
+  clmr.clm.group:
+    container_name: clmr.clm.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=clmr.clm.group
+      - CORE_PEER_ADDRESS=clmr.clm.group:21051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:21051
+      - CORE_PEER_CHAINCODEADDRESS=clmr.clm.group:21052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:21052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=clmr.clm.group:21051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=clmr.clm.group:21051
       - CORE_PEER_LOCALMSPID=clmMSP
     #  - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg+a2TrePaoe23eE/9PflbQMB9acCXgSbHLJOqaxoxGSyhRANCAAQllm6tCl7QFpeB8sww+YO0NYpDyFmdFD9q2UdxJIW6/rVTfLyThGLOu8rjQifh8ouPEBR/3LTraRxjygyze2SR_sk
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/clm.group/peers/peer1.clm.group/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/clm.group/peers/peer1.clm.group/tls:/etc/hyperledger/fabric/tls
-        - peer1.clm.group:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/clm.group/peers/clmr.clm.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/clm.group/peers/clmr.clm.group/tls:/etc/hyperledger/fabric/tls
+        - clmr.clm.group:/var/hyperledger/production
     ports:
-      - 11051:11051
+      - 21051:21051
     networks:
       - byfn
 
-
-  peer1.ins.group:
-    container_name: peer1.ins.group
+  clmn.clm.group:
+    container_name: clmn.clm.group
     extends:
       file: base.yaml
       service: peer-base
     environment:
-      - CORE_PEER_ID=peer1.ins.group
-      - CORE_PEER_ADDRESS=peer1.ins.group:13051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:13051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.ins.group:13052
+      - CORE_PEER_ID=clmn.clm.group
+      - CORE_PEER_ADDRESS=clmn.clm.group:22051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:22051
+      - CORE_PEER_CHAINCODEADDRESS=clmn.clm.group:11052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:11052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=clmn.clm.group:22051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=clmn.clm.group:22051
+      - CORE_PEER_LOCALMSPID=clmMSP
+    #  - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg+a2TrePaoe23eE/9PflbQMB9acCXgSbHLJOqaxoxGSyhRANCAAQllm6tCl7QFpeB8sww+YO0NYpDyFmdFD9q2UdxJIW6/rVTfLyThGLOu8rjQifh8ouPEBR/3LTraRxjygyze2SR_sk
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/clm.group/peers/clmn.clm.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/clm.group/peers/clmn.clm.group/tls:/etc/hyperledger/fabric/tls
+        - clmn.clm.group:/var/hyperledger/production
+    ports:
+      - 22051:22051
+    networks:
+      - byfn
+
+
+  pvins.ins.group:
+    container_name: pvins.ins.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=pvins.ins.group
+      - CORE_PEER_ADDRESS=pvins.ins.group:23051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:23051
+      - CORE_PEER_CHAINCODEADDRESS=pvins.ins.group:13052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:13052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.ins.group:13051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.ins.group:13051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=pvins.ins.group:23051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=pvins.ins.group:23051
       - CORE_PEER_LOCALMSPID=insMSP
    #   - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgt5C0p9ZB/pNbLLUEhcNTy6u32rrp3SRh4hQJ4zNfcduhRANCAAT62JqaoIFcxiyT0/LklUKmv3EH/p28cGKC2oruK2xFVd8EZkQ6qqP9rXGrjhdI8CTP5CjzrCH82b66zTN3+hRh_sk
     volumes:
         - /var/run/:/host/var/run/
-        - ./crypto-config/peerOrganizations/ins.group/peers/peer1.ins.group/msp:/etc/hyperledger/fabric/msp
-        - ./crypto-config/peerOrganizations/ins.group/peers/peer1.ins.group/tls:/etc/hyperledger/fabric/tls
-        - peer1.ins.group:/var/hyperledger/production
+        - ./crypto-config/peerOrganizations/ins.group/peers/pvins.ins.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/ins.group/peers/pvins.ins.group/tls:/etc/hyperledger/fabric/tls
+        - pvins.ins.group:/var/hyperledger/production
     ports:
-      - 13051:13051
+      - 23051:23051
+    networks:
+      - byfn
+
+  puins.ins.group:
+    container_name: puins.ins.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=puins.ins.group
+      - CORE_PEER_ADDRESS=puins.ins.group:24051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:24051
+      - CORE_PEER_CHAINCODEADDRESS=puins.ins.group:13052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:13052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=puins.ins.group:24051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=puins.ins.group:24051
+      - CORE_PEER_LOCALMSPID=insMSP
+   #   - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgt5C0p9ZB/pNbLLUEhcNTy6u32rrp3SRh4hQJ4zNfcduhRANCAAT62JqaoIFcxiyT0/LklUKmv3EH/p28cGKC2oruK2xFVd8EZkQ6qqP9rXGrjhdI8CTP5CjzrCH82b66zTN3+hRh_sk
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/ins.group/peers/puins.ins.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/ins.group/peers/puins.ins.group/tls:/etc/hyperledger/fabric/tls
+        - puins.ins.group:/var/hyperledger/production
+    ports:
+      - 24051:24051
+    networks:
+      - byfn
+  
+  regtr.tralog.group:
+    container_name: regtr.tralog.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=regtr.tralog.group
+      - CORE_PEER_ADDRESS=regtr.tralog.group:25051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:25051
+      - CORE_PEER_CHAINCODEADDRESS=regtr.tralog.group:13052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:13052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=regtr.tralog.group:25051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=regtr.tralog.group:25051
+      - CORE_PEER_LOCALMSPID=tralogMSP
+   #   - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgt5C0p9ZB/pNbLLUEhcNTy6u32rrp3SRh4hQJ4zNfcduhRANCAAT62JqaoIFcxiyT0/LklUKmv3EH/p28cGKC2oruK2xFVd8EZkQ6qqP9rXGrjhdI8CTP5CjzrCH82b66zTN3+hRh_sk
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/tralog.group/peers/regtr.tralog.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/tralog.group/peers/regtr.tralog.group/tls:/etc/hyperledger/fabric/tls
+        - regtr.tralog.group:/var/hyperledger/production
+    ports:
+      - 25051:25051
+    networks:
+      - byfn
+  
+  nattr.tralog.group:
+    container_name: nattr.tralog.group
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=nattr.tralog.group
+      - CORE_PEER_ADDRESS=nattr.tralog.group:26051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:26051
+      - CORE_PEER_CHAINCODEADDRESS=nattr.tralog.group:13052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:13052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=nattr.tralog.group:26051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=nattr.tralog.group:26051
+      - CORE_PEER_LOCALMSPID=tralogMSP
+   #   - FABRIC_CA_SERVER_TLS_KEYFILE=MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgt5C0p9ZB/pNbLLUEhcNTy6u32rrp3SRh4hQJ4zNfcduhRANCAAT62JqaoIFcxiyT0/LklUKmv3EH/p28cGKC2oruK2xFVd8EZkQ6qqP9rXGrjhdI8CTP5CjzrCH82b66zTN3+hRh_sk
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./crypto-config/peerOrganizations/tralog.group/peers/nattr.tralog.group/msp:/etc/hyperledger/fabric/msp
+        - ./crypto-config/peerOrganizations/tralog.group/peers/nattr.tralog.group/tls:/etc/hyperledger/fabric/tls
+        - nattr.tralog.group:/var/hyperledger/production
+    ports:
+      - 26051:26051
     networks:
       - byfn
 
@@ -261,10 +513,20 @@ services:
       - orderer3.group
       - orderer4.group
       - orderer5.group
-      - peer1.wdra.group
-      - peer1.bank.group
-      - peer1.pvcs.group
-      - peer1.clm.group
-      - peer1.ins.group
+      - wdra.wdra.group
+      - insp.wdra.group
+      - dpstr.wdra.group
+      - pubank.fis.group
+      - pvbank.fis.group
+      - nbfc.fis.group
+      - pvcs.cs.group
+      - pucs.cs.group
+      - cco.cs.group
+      - clmr.clm.group
+      - clmn.clm.group
+      - pvins.ins.group
+      - puins.ins.group
+      - regtr.tralog.group
+      - nattr.tralog.group
     networks:
       - byfn
